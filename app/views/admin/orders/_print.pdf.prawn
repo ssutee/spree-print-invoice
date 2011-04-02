@@ -3,9 +3,15 @@ require 'prawn/layout'
 font "Helvetica"
 im = "#{RAILS_ROOT}/#{Spree::Config[:print_invoice_logo_path]}"
 
-image im , :at => [0,720], :scale => 0.35
+image im , :at => [0,720] #, :scale => 0.35
 
-render :partial => "header"
+fill_color "E99323"
+if @hide_prices
+  text I18n.t(:packaging_slip), :align => :right, :style => :bold, :size => 18
+else
+  text I18n.t(:customer_invoice), :align => :right, :style => :bold, :size => 18
+end
+fill_color "000000"
 
 move_down 4
 
@@ -26,4 +32,4 @@ render :partial => "line_items_box"
 move_down 8
 
 # Footer
-render :partial => "footer"
+# render :partial => "footer"

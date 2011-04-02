@@ -1,7 +1,7 @@
-font "Helvetica", :size => 12
+font "Helvetica", :size => 8, :color => "#444444"
 move_down 10 
 
-text I18n.t(:thanks)
+text I18n.t(:note)
 
 move_down 20 
 

@@ -9,15 +9,15 @@ end
 # Line Items
 bounding_box [0,cursor], :width => 540, :height => 430 do
   move_down 2
-  header =  [Prawn::Table::Cell.new( :text => I18n.t(:sku), :font_style => :bold),
-                Prawn::Table::Cell.new( :text =>I18n.t(:item_description), :font_style => :bold ) ]
-  header <<  Prawn::Table::Cell.new( :text =>I18n.t(:price), :font_style => :bold ) unless @hide_prices
-  header <<  Prawn::Table::Cell.new( :text =>I18n.t(:qty), :font_style => :bold, :align => 1 )
-  header <<  Prawn::Table::Cell.new( :text =>I18n.t(:total), :font_style => :bold ) unless @hide_prices
-
+  header =  [Prawn::Table::Cell.new( :text => t(:sku), :font_style => :bold),
+                Prawn::Table::Cell.new( :text => t(:item_description), :font_style => :bold ) ]
+  header <<  Prawn::Table::Cell.new( :text => t(:price), :font_style => :bold ) unless @hide_prices
+  header <<  Prawn::Table::Cell.new( :text => t(:qty), :font_style => :bold, :align => 1 )
+  header <<  Prawn::Table::Cell.new( :text => t(:total), :font_style => :bold ) unless @hide_prices
+    
   table [header],
     :position           => :center,
-    :border_width => 0,
+    :border_width => 1,
     :vertical_padding   => 2,
     :horizontal_padding => 6,
     :font_size => 9,
@@ -25,8 +25,6 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
     :align => @align
 
   move_down 4
-  horizontal_rule
-  move_down 2
 
   bounding_box [0,cursor], :width => 540 do
     move_down 2
@@ -42,7 +40,7 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
 
     table content,
       :position           => :center,
-      :border_width => 0,
+      :border_width => 0.5,
       :vertical_padding   => 5,
       :horizontal_padding => 6,
       :font_size => 9,
@@ -53,7 +51,7 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
   font "Helvetica", :size => 9
 
   bounding_box [20,cursor  ], :width => 400 do
-    render :partial => "bye"
+    render :partial => "bye" unless @hide_prices
   end
 
   render :partial => "totals" unless @hide_prices
