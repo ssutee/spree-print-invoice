@@ -11,7 +11,7 @@ totals << [Prawn::Table::Cell.new( :text => t(:order_total), :font_style => :bol
 bounding_box [bounds.right - 500, bounds.bottom + (totals.length * 18)], :width => 500 do
   table totals,
     :position => :right,
-    :border_width => 0,
+    :border_width => 1,
     :vertical_padding   => 2,
     :horizontal_padding => 6,
     :font_size => 9,
