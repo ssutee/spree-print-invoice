@@ -36,7 +36,7 @@ bounding_box [0,600], :width => 540 do
                   "#{@order.ship_address.zipcode} #{@order.ship_address.city} #{(@order.ship_address.state ? @order.ship_address.state.abbr : "")}"]
       data2 << [bill_address.country.name, ship_address.country.name]
       data2 << [bill_address.phone, ship_address.phone]
-      data2 << [shipping_method.name, shipping_method.name] if shipping_method
+      data2 << [" ", "Shipping method: #{shipping_method.name}"] if shipping_method
     end
     
     table data2,
