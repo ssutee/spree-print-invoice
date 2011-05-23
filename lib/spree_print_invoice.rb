@@ -8,15 +8,12 @@ module PrintInvoice
     def self.activate
 
       Admin::OrdersController.class_eval do
-        show.success.wants.pdf do
-          template = params[:template] || "invoice"
-          render :layout => false , :template => "admin/orders/#{template}.pdf.prawn"
-        end #
+        respond_to :html, :pdf
+        respond_override(:show => {:pdf => {:success =>
+            lambda { render :layout => false, :template => "admin/orders/#{params[:template] || "invoice"}.pdf.prawn" } } })
       end
 
-
     end
-
 
     config.autoload_paths += %W(#{config.root}/lib)
     config.to_prepare &method(:activate).to_proc
