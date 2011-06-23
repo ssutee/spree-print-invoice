@@ -10,42 +10,38 @@ if !font_normal.nil? && !font_bold.nil?
                   :bold => font_bold})
 end
 
-
 font_name ||= "Helvetica"
 
-im = "#{RAILS_ROOT}/#{Spree::Config[:print_invoice_logo_path]}"
+font font_name, :size => 20
 
-image im , :at => [0,720] #, :scale => 0.35
+bill_address = @order.bill_address
+ship_address = @order.ship_address
+shipping_method = @order.shipping_method
+anonymous = @order.email =~ /@example.net$/
 
+bounding_box [0,600], :width => 540 do
+  move_down 4
 
-fill_color "135391"
+  text I18n.t(:please_send_to), :style => :bold
 
-font font_name
+  move_down 2
 
-if @hide_prices
-  text I18n.t(:packaging_slip), :align => :right, :size => 24
-else
-  text I18n.t(:customer_invoice), :align => :right, :size => 24
+  text "#{ship_address.firstname} #{ship_address.lastname} (#{ship_address.phone})"
+  if ship_address.address2.blank?
+    text ship_address.address1
+  else
+    text "#{ship_address.address1} #{ship_address.address2}"
+  end
+
+  text "#{@order.ship_address.city} #{ship_address.country.name}  #{@order.ship_address.zipcode}" 
+
+  move_down 4
+
+  stroke do
+    line_width 0.5
+    line bounds.top_left, bounds.top_right
+    line bounds.top_left, bounds.bottom_left
+    line bounds.top_right, bounds.bottom_right
+    line bounds.bottom_left, bounds.bottom_right
+  end
 end
-fill_color "000000"
-
-move_down 4
-
-font font_name,  :size => 12
-text "#{I18n.t(:order_number)} #{@order.number}", :align => :right
-text "#{@order.email}", :align => :right
-
-move_down 2
-font font_name, :size => 12
-text "#{I18n.l @order.completed_at.to_date}", :align => :right
-
-render :partial => "address"
-
-move_down 30
-
-render :partial => "line_items_box"
-
-#move_down 8
-
-# Footer
-# render :partial => "footer"
