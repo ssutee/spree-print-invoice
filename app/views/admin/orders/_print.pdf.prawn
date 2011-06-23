@@ -5,8 +5,7 @@ font_family_bold = Spree::Config[:print_invoice_font_family_bold] || "Helvetica"
 font_family_italic = Spree::Config[:print_invoice_font_family_italic] || "Helvetica"
 font_family_bold_italic = Spree::Config[:print_invoice_font_family_bold_italic] || "Helvetica"
 
-
-font_size = Spree::Config[:print_invoice_font_size] || 18
+font_size = Spree::Config[:print_invoice_font_size].to_f || 18
 
 im = "#{RAILS_ROOT}/#{Spree::Config[:print_invoice_logo_path]}"
 
