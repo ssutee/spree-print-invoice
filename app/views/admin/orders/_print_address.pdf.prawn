@@ -19,7 +19,7 @@ ship_address = @order.ship_address
 shipping_method = @order.shipping_method
 
 (0..4).each do |i|
-  bounding_box [0,100+(100*i)], :width => 540 do
+  bounding_box [0,50+(100*i)], :width => 540 do
     move_down 4
 
     text "   #{I18n.t(:please_send_to)}", :style => :bold
