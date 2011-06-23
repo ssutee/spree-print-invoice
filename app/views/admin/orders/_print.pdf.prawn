@@ -4,9 +4,12 @@ font_name = Spree::Config[:print_invoice_font_name]
 font_normal = Spree::Config[:print_invoice_font_normal] 
 font_bold = Spree::Config[:print_invoice_font_bold]
 
-font_families.update(
-  font_name => {:normal => font_normal,
-                :bold => font_bold}) unless font_name.nil?
+if !font_normal.nil? && !font_bold.nil?
+  font_families.update(
+    font_name => {:normal => font_normal,
+                  :bold => font_bold})
+end
+
 
 font_name ||= "Helvetica"
 
