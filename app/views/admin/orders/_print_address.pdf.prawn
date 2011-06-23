@@ -18,7 +18,8 @@ bill_address = @order.bill_address
 ship_address = @order.ship_address
 shipping_method = @order.shipping_method
 
-  bounding_box [0,bounds.height-50], :width => 540 do
+(0..3).each do |i|
+  bounding_box [0,bounds.height-(i*250)], :width => 540 do
     move_down 4
 
     indent(5) do
@@ -48,4 +49,4 @@ shipping_method = @order.shipping_method
       line bounds.bottom_left, bounds.bottom_right
     end
   end
-
+end
