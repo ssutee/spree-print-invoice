@@ -18,21 +18,25 @@ bill_address = @order.bill_address
 ship_address = @order.ship_address
 shipping_method = @order.shipping_method
 
-  bounding_box [0,300], :width => 540 do
+  bounding_box [0,bounds.height-50], :width => 540 do
     move_down 4
 
-    text "   #{I18n.t(:please_send_to)}", :style => :bold
+    indent(5) do
+      text "#{I18n.t(:please_send_to)}", :style => :bold
+    end
 
     move_down 2
 
-    text "      #{ship_address.firstname} #{ship_address.lastname} (#{ship_address.phone})"
-    if ship_address.address2.blank?
-      text ship_address.address1
-    else
-      text "      #{ship_address.address1} #{ship_address.address2}"
-    end
+    indent(10) do
+      text "      #{ship_address.firstname} #{ship_address.lastname} (#{ship_address.phone})"
+      if ship_address.address2.blank?
+        text ship_address.address1
+      else
+        text "      #{ship_address.address1} #{ship_address.address2}"
+      end
 
-    text "      #{@order.ship_address.city} #{ship_address.country.name}  #{@order.ship_address.zipcode}" 
+      text "      #{@order.ship_address.city} #{ship_address.country.name}  #{@order.ship_address.zipcode}" 
+    end
 
     move_down 4
 
