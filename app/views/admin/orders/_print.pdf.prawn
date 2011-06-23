@@ -23,20 +23,20 @@ fill_color "135391"
 font font_name
 
 if @hide_prices
-  text I18n.t(:packaging_slip), :align => :right, :size => 18
+  text I18n.t(:packaging_slip), :align => :right, :size => 24
 else
-  text I18n.t(:customer_invoice), :align => :right, :size => 18
+  text I18n.t(:customer_invoice), :align => :right, :size => 24
 end
 fill_color "000000"
 
 move_down 4
 
-font font_name,  :size => 9
+font font_name,  :size => 12
 text "#{I18n.t(:order_number)} #{@order.number}", :align => :right
 text "#{@order.email}", :align => :right
 
 move_down 2
-font font_name, :size => 9
+font font_name, :size => 12
 text "#{I18n.l @order.completed_at.to_date}", :align => :right
 
 render :partial => "address"
