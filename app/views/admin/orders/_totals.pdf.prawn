@@ -14,7 +14,7 @@ bounding_box [bounds.right - 500, bounds.bottom + (totals.length * 18)], :width 
     :border_width => 1,
     :vertical_padding   => 2,
     :horizontal_padding => 6,
-    :font_size => 9,
+    :font_size => 12,
     :column_widths => { 0 => 425, 1 => 75 } ,
     :align => { 0 => :right, 1 => :right }
 
