@@ -1,3 +1,5 @@
+font_name = Spree::Config[:print_invoice_font_name] || "Helvetica"
+
 if @hide_prices
   @column_widths = { 0 => 100, 1 => 165, 2 => 75 } 
   @align = { 0 => :left, 1 => :left, 2 => :right }
@@ -48,7 +50,7 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
       :align => @align
   end
 
-  font "Helvetica", :size => 9
+  font font_name, :size => 9
 
   #bounding_box [20,cursor  ], :width => 400 do
     render :partial => "totals" unless @hide_prices
