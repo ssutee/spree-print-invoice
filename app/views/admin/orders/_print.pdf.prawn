@@ -7,7 +7,7 @@ font_bold = Spree::Config[:print_invoice_font_bold]
 font_italic = Spree::Config[:print_invoice_font_italic]
 font_bold_italic = Spree::Config[:print_invoice_font_bold_italic]
 
-font_families.updates(
+font_families.update(
   font_name => {:normal => font_normal,
                 :bold => font_bold,
                 :italic => font_italic,
