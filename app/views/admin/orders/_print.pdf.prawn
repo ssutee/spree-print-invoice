@@ -1,9 +1,17 @@
 require 'prawn/layout'
 
-font_family = Spree::Config[:print_invoice_font_family] || "Helvetica"
-font_family_bold = Spree::Config[:print_invoice_font_family_bold] || "Helvetica"
-font_family_italic = Spree::Config[:print_invoice_font_family_italic] || "Helvetica"
-font_family_bold_italic = Spree::Config[:print_invoice_font_family_bold_italic] || "Helvetica"
+font_normal = Spree::Config[:print_invoice_font_normal] 
+font_bold = Spree::Config[:print_invoice_font_bold]
+font_italic = Spree::Config[:print_invoice_font_italic]
+font_bold_italic = Spree::Config[:print_invoice_font_bold_italic]
+
+font_families.updates(
+  font_name => {:normal => font_normal,
+                :bold => font_bold,
+                :italic => font_italic,
+                :bold_italic => font_bold_italic}) unless Spree::Config[:print_invoice_font_name].nil?
+
+font_name = Spree::Config[:print_invoice_font_name] || "Helvetica"
 
 im = "#{RAILS_ROOT}/#{Spree::Config[:print_invoice_logo_path]}"
 
@@ -12,7 +20,7 @@ image im , :at => [0,720] #, :scale => 0.35
 
 fill_color "135391"
 
-font font_family
+font font_name
 
 if @hide_prices
   text I18n.t(:packaging_slip), :align => :right, :size => 20
@@ -23,12 +31,12 @@ fill_color "000000"
 
 move_down 4
 
-font font_family,  :size => 10
+font font_name,  :size => 10
 text "#{I18n.t(:order_number)} #{@order.number}", :align => :right
 text "#{@order.email}", :align => :right
 
 move_down 2
-font font_family, :size => 10
+font font_name, :size => 10
 text "#{I18n.l @order.completed_at.to_date}", :align => :right
 
 render :partial => "address"
