@@ -14,11 +14,9 @@ bounding_box [0,600], :width => 540 do
   if anonymous and Spree::Config[:suppress_anonymous_address]
     data << [[" ", " "]] * 6
   else
-    data << [["#{bill_address.firstname} #{bill_address.lastname}", 
-              "#{ship_address.firstname} #{ship_address.lastname}"],
-             [bill_address.address1.strip, 
-              ship_address.address1.strip]
-            ]
+    data << ["#{bill_address.firstname} #{bill_address.lastname}", 
+              "#{ship_address.firstname} #{ship_address.lastname}"]
+    data << [bill_address.address1.strip, ship_address.address1.strip]
     data << [bill_address.address2.strip, ship_address.address2.strip] unless 
               bill_address.address2.blank? and ship_address.address2.blank?
     data << ["#{@order.bill_address.zipcode} #{@order.bill_address.city}  #{(@order.bill_address.state ? @order.bill_address.state.abbr : "")} ",

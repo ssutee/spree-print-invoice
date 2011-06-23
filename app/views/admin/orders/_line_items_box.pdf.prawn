@@ -22,7 +22,7 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
     :border_width => 1,
     :vertical_padding   => 2,
     :horizontal_padding => 6,
-    :font_size => 9,
+    :font_size => 12,
     :column_widths => @column_widths ,
     :align => @align
 
@@ -45,12 +45,12 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
       :border_width => 0.5,
       :vertical_padding   => 5,
       :horizontal_padding => 6,
-      :font_size => 9,
+      :font_size => 12,
       :column_widths => @column_widths ,
       :align => @align
   end
 
-  font font_name, :size => 9
+  font font_name, :size => 12
 
   #bounding_box [20,cursor  ], :width => 400 do
     render :partial => "totals" unless @hide_prices
