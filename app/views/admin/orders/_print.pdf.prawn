@@ -15,7 +15,7 @@ image im , :at => [0,720] #, :scale => 0.35
 
 fill_color "135391"
 
-font font_family_bold
+font font_family_bold, :style => :bold
 
 if @hide_prices
   text I18n.t(:packaging_slip), :align => :right, :style => :bold, :size => font_size
