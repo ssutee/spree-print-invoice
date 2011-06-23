@@ -9,7 +9,7 @@ anonymous = @order.email =~ /@example.net$/
 bounding_box [0,600], :width => 540 do
   move_down 2
   data = [[Prawn::Table::Cell.new( :text => I18n.t(:billing_address), :font_style => :bold ),
-                Prawn::Table::Cell.new( :text =>I18n.t(:shipping_address), :font_style => :bold )]]
+                Prawn::Table::Cell.new( :text =>I18n.t(:shipping_address), :font_style => :bold )], ["xxx","xxx"]]
 
   table data,
     :position           => :center,
@@ -28,10 +28,10 @@ bounding_box [0,600], :width => 540 do
     if anonymous and Spree::Config[:suppress_anonymous_address]
       data2 = [[" "," "]] * 6 
     else
-      data2 = [[Prawn::Table::Cell.new(:text => "#{bill_address.firstname} #{bill_address.lastname}"), 
-                Prawn::Table::Cell.new(:text => "#{ship_address.firstname} #{ship_address.lastname}")],
-               [Prawn::Table::Cell.new(:text => bill_address.address1.strip), 
-                Prawn::Table::Cell.new(:text => ship_address.address1.strip)]
+      data2 = [["#{bill_address.firstname} #{bill_address.lastname}", 
+                "#{ship_address.firstname} #{ship_address.lastname}"],
+               [bill_address.address1.strip, 
+                ship_address.address1.strip]
               ]
       data2 << [bill_address.address2.strip, ship_address.address2.strip] unless 
                 bill_address.address2.blank? and ship_address.address2.blank?
