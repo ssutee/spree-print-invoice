@@ -21,16 +21,16 @@ shipping_method = @order.shipping_method
 customer_title = I18n.t(:customer_title) || ""
 
 (0..3).each do |i|
-  bounding_box [0,bounds.height-(i*150)], :width => 540 do
+  bounding_box [0,bounds.height-(i*150)], :width => 340 do
     move_down 4
 
-    indent(5) do
+    indent(15) do
       text "#{I18n.t(:please_send_to)}", :style => :bold
     end
 
     move_down 2
 
-    indent(10) do
+    indent(30) do
       text "#{customer_title} #{ship_address.firstname} #{ship_address.lastname} (#{ship_address.phone})"
       if ship_address.address2.blank?
         text ship_address.address1
