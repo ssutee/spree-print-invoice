@@ -1,5 +1,7 @@
 require 'prawn/layout'
 
+font_name = Spree::Config[:print_invoice_font_name] 
+
 font_normal = Spree::Config[:print_invoice_font_normal] 
 font_bold = Spree::Config[:print_invoice_font_bold]
 font_italic = Spree::Config[:print_invoice_font_italic]
@@ -9,9 +11,9 @@ font_families.updates(
   font_name => {:normal => font_normal,
                 :bold => font_bold,
                 :italic => font_italic,
-                :bold_italic => font_bold_italic}) unless Spree::Config[:print_invoice_font_name].nil?
+                :bold_italic => font_bold_italic}) unless font_name.nil?
 
-font_name = Spree::Config[:print_invoice_font_name] || "Helvetica"
+font_name ||= "Helvetica"
 
 im = "#{RAILS_ROOT}/#{Spree::Config[:print_invoice_logo_path]}"
 
