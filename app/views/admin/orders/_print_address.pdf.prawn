@@ -45,7 +45,7 @@ shipping_method = @order.shipping_method
     end
   end
 
-  bounding_box [0,250], :width => 540 do
+  bounding_box [0,400], :width => 540 do
     move_down 4
 
     text "   #{I18n.t(:please_send_to)}", :style => :bold
