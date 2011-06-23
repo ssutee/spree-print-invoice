@@ -15,18 +15,18 @@ image im , :at => [0,720] #, :scale => 0.35
 
 fill_color "135391"
 
-font font_family_bold, :style => :bold
+font font_family
 
 if @hide_prices
-  text I18n.t(:packaging_slip), :align => :right, :style => :bold, :size => font_size
+  text I18n.t(:packaging_slip), :align => :right, :size => font_size
 else
-  text I18n.t(:customer_invoice), :align => :right, :style => :bold, :size => font_size
+  text I18n.t(:customer_invoice), :align => :right, :size => font_size
 end
 fill_color "000000"
 
 move_down 4
 
-font font_family_bold,  :size => font_size/2,  :style => :bold
+font font_family,  :size => font_size/2 
 text "#{I18n.t(:order_number)} #{@order.number}", :align => :right
 text "#{@order.email}", :align => :right
 
