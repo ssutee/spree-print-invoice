@@ -38,7 +38,7 @@ customer_title = I18n.t(:customer_title) || ""
         text "#{ship_address.address1} #{ship_address.address2}"
       end
 
-      text "#{@order.ship_address.city} #{ship_address.country.name} #{@order.ship_address.zipcode}" 
+      text "#{ship_address.city} #{ship_address.state} #{ship_address.zipcode}" 
     end
 
     move_down 4
