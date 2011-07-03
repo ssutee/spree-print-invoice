@@ -19,8 +19,8 @@ bounding_box [0,600], :width => 540 do
     data << [bill_address.address1.strip, ship_address.address1.strip]
     data << [bill_address.address2.strip, ship_address.address2.strip] unless 
               bill_address.address2.blank? and ship_address.address2.blank?
-    data << ["#{@order.bill_address.zipcode} #{@order.bill_address.city}  #{(@order.bill_address.state ? @order.bill_address.state.abbr : "")} ",
-                "#{@order.ship_address.zipcode} #{@order.ship_address.city} #{(@order.ship_address.state ? @order.ship_address.state.abbr : "")}"]
+    data << ["#{@order.bill_address.city} #{@order.bill_address.state_text} #{@order.bill_address.zipcode}",
+                "#{@order.ship_address.city} #{@order.ship_address.state_text} #{@order.ship_address.zipcode}"]
     data << [bill_address.country.name.strip, ship_address.country.name.strip]
     data << [bill_address.phone.strip, ship_address.phone.strip]
     data << [" ", "Shipping method: #{shipping_method.name}"] if shipping_method
