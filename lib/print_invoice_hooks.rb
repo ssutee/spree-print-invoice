@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PrintInvoiceHooks < Spree::ThemeSupport::HookListener
 
 

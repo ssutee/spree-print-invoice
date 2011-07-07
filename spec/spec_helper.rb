@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 unless defined? SPREE_ROOT
   ENV["RAILS_ENV"] = "test"
   case

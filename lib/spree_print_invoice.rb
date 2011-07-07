@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'print_invoice_hooks'
 require 'prawn_handler'
 
